@@ -1,7 +1,11 @@
 <?php
 
-class Bicycle
-{
+
+require_once 'Vehicle.php';
+require_once 'Bicycle.php';
+
+
+class Bicycle extends Vehicle {
     public string $color;
     public int $currentSpeed;
     public int $nbSeats = 1;
@@ -11,7 +15,6 @@ class Bicycle
     $this->currentSpeed = 15;
     return "Go !";
 }
-
 
 public function brake(): string
 {
@@ -23,24 +26,8 @@ public function brake(): string
    $sentence .= "I'm stopped !";
    return $sentence;
 }
-
-public function dump()
-{
-    var_dump($this);
-}
-public function getCurrentSpeed(): int
-{
-    return $this->currentSpeed;
 }
 
-public function setCurrentSpeed(int $currentSpeed): void
-{
-    if($currentSpeed >= 0) {
-    $this->currentSpeed = $currentSpeed;
-}
-function __construct(string $color)
-{
-    $this->color = $color;
-}
-}
-}
+$bicycle = new Bicycle('blue', 1);
+echo $bicycle->forward();
+var_dump($bicycle);
