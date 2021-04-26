@@ -21,12 +21,19 @@ echo $bike->brake();
 echo '<br> Vitesse du vélo : ' . $bike->currentSpeed . ' km/h' . '<br>';
 echo $bike->brake();
 
-$car = new Car('green', 4, 'electric');
-echo $car->forward();
-var_dump($car);
-var_dump(Car::ALLOWED_ENERGIES);
+$car = new Car('green', 4, 'electric',true);
+$car->setHasParkBrake(true);
+try {
+    $car->start();
+} catch (Exception $exception){
+    echo $exception->getMessage();
+    $car->setHasParkBrake(true);
+} finally {
+    echo "Ma voiture roule comme un donut";
+}
 
-$truck1 = new Truck('black',3,'fuel',0);
+
+/* $truck1 = new Truck('black',3,'fuel',0);
 echo $truck1->forward();
 var_dump($truck1);
 
@@ -40,4 +47,4 @@ var_dump($truck6);
 
 $skateboard = new ResidentialWay();
 $skateboard->addVehicle(new Bicycle('pink',1));
-var_dump($skateboard);
+var_dump($skateboard); */
